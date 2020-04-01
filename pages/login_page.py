@@ -1,6 +1,3 @@
-import allure
-
-
 class LoginPage:
 
     def __init__(self, driver):
@@ -12,7 +9,6 @@ class LoginPage:
         self.logout_btn = '#logout_sidebar_link'
         self.error_alert = '#login_button_container h3'
 
-    @allure.step('Login as {1} user')
     def login(self, user, password):
         self.driver.find_element_by_css_selector(self.login_input).send_keys(user)
         self.driver.find_element_by_css_selector(self.password_input).send_keys(password)
