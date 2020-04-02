@@ -3,6 +3,9 @@ import allure
 from allure_commons.types import AttachmentType
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+
+from pages.checkout_overview_page import CheckoutOverviewPage
+from pages.checkout_page import CheckoutPage
 from pages.inventory_page import InventoryPage
 from pages.login_page import LoginPage
 from pages.cart_page import CartPage
@@ -49,7 +52,8 @@ def setup3(request):
     driver.implicitly_wait(5)
     driver.maximize_window()
     request.cls.driver = driver
-    request.cls.inventory_page = InventoryPage(driver)
+    request.cls.cart_page = CartPage(driver)
+    request.cls.checkout_page = CheckoutPage(driver)
     driver.find_element_by_css_selector(
         'div.inventory_item:nth-child(1) > div:nth-child(3) > button:nth-child(2)').click()
     driver.find_element_by_css_selector(
@@ -67,7 +71,8 @@ def setup4(request):
     driver.implicitly_wait(5)
     driver.maximize_window()
     request.cls.driver = driver
-    request.cls.inventory_page = InventoryPage(driver)
+    request.cls.cart_page = CartPage(driver)
+    request.cls.checkout_overview_page = CheckoutOverviewPage(driver)
     driver.find_element_by_css_selector(
         'div.inventory_item:nth-child(1) > div:nth-child(3) > button:nth-child(2)').click()
     driver.find_element_by_css_selector(

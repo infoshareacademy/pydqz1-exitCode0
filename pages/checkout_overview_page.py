@@ -1,4 +1,4 @@
-class CheckoutOverwievPage:
+class CheckoutOverviewPage:
 
     def __init__(self, driver):
         self.driver = driver
