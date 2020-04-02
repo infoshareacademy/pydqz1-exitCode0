@@ -1,13 +1,13 @@
 import pytest
+import allure
 from allure_commons.types import AttachmentType
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.inventory_page import InventoryPage
 from pages.login_page import LoginPage
 from pages.cart_page import CartPage
-from generator_function import generate_nick
-from generator_function import numbers_generator
-import allure
+from utils.generator_function import generate_nick
+from utils.generator_function import numbers_generator
 
 
 @pytest.fixture()

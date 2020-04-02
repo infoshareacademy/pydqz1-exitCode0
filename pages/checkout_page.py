@@ -1,5 +1,5 @@
-from generator_function import generate_nick
-from generator_function import numbers_generator
+from utils.generator_function import generate_nick
+from utils.generator_function import numbers_generator
 
 
 class CheckoutPage:
