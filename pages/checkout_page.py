@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from utils.generator_function import generate_nick
 from utils.generator_function import numbers_generator
 
@@ -11,7 +12,8 @@ class CheckoutPage:
         self.last_name_input = '#last-name'
         self.postal_code_input = '#postal-code'
         self.btn_continue = '.btn_primary'
-        self.btn_cancel = '.cart_cancel_link'
+        self.btn_cancel = '.#checkout_info_container > div > form > div.checkout_buttons > a'
+        self.cancel_cart = (By.CSS_SELECTOR, '#contents_wrapper > div.subheader')
 
     def person_data(self):
         self.driver.find_element_by_css_selector(self.checkout_btn).click()
@@ -22,3 +24,7 @@ class CheckoutPage:
 
     def cancel_person_data(self):
         self.driver.find_element_by_css_selector(self.btn_cancel).click()
+
+    def cancel_cart(self):
+        cart_header = self.driver.find_element(*self.cancel_cart)
+        return cart_header.text
