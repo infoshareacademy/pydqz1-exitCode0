@@ -13,9 +13,8 @@ class TestLogin:
     @allure.step('Test login with valid data')
     def test_login_valid_data(self, user, password):
         self.login_page.login(user, password)
-        time.sleep(2)
         self.driver.find_element_by_css_selector(self.login_page.burger_btn).click()
-        time.sleep(2)
+        time.sleep(1)
         # Assertion that checks displaying the logout button after successful login
         assert self.driver.find_element_by_css_selector(self.login_page.logout_btn).is_displayed() is True
 
