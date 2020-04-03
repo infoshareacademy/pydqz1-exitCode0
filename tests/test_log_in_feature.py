@@ -1,6 +1,7 @@
 import pytest
 import allure
 import time
+from utils.generator_function import generate_nick
 
 
 @pytest.mark.usefixtures('setup')
@@ -21,7 +22,7 @@ class TestLogin:
 # Test that checks the login function using the invalid data
     @allure.step('Test login with invalid data')
     def test_login_invalid_data(self):
-        self.login_page.login("user", "password")
+        self.login_page.login(generate_nick(6, 2), generate_nick(6, 2))
         # Assertion that checks for an error message caused by the use of incorrect data
         assert self.driver.find_element_by_css_selector(self.login_page.error_alert).text == "Epic sadface: Username and password do not match any user in this service"
 
