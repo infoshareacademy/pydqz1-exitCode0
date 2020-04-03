@@ -7,7 +7,7 @@ You can use this repository for educational use, in case you need to figure out 
 You need to have **pytest** and **selenium** installed to launch tests.
 We recommend you chcecking the requirements:
 
-* allure-pytest==2.8.9
+* allure-pytest==2.7.0
 * pytest==5.3.5
 * pytest-xdist==1.31.0
 * selenium==3.141.0
