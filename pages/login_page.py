@@ -8,6 +8,7 @@ class LoginPage:
         self.burger_btn = '[class="bm-burger-button"] > button'
         self.logout_btn = '#logout_sidebar_link'
         self.error_alert = '#login_button_container h3'
+        self.product_image = 'a#item_4_img_link > img'
 
     def login(self, user, password):
         self.driver.find_element_by_css_selector(self.login_input).send_keys(user)
