@@ -45,6 +45,21 @@ def setup1(request):
 
 
 @pytest.fixture()
+def setup2(request):
+    global driver
+    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver.get('https://www.saucedemo.com/inventory.html')
+    driver.implicitly_wait(5)
+    driver.maximize_window()
+    request.cls.driver = driver
+    request.cls.cart_page = CartPage(driver)
+    request.cls.checkout_page = CheckoutPage(driver)
+    driver.find_element_by_css_selector('.svg-inline--fa > path:nth-child(1)').click()
+    yield
+    driver.quit()
+
+
+@pytest.fixture()
 def setup3(request):
     global driver
     driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -85,5 +100,3 @@ def setup4(request):
     driver.find_element_by_css_selector('.btn_primary').click()
     yield
     driver.quit()
-
-
