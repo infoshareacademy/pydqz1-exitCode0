@@ -2,13 +2,12 @@ import pytest
 import allure
 
 
-#
 @pytest.mark.usefixtures('setup2')
 class TestCheckoutFeatureEmptyBasket:
 
-    # Test that checks epmty address fields and redirection to your information page from your cart page
-    @allure.step('Test checkout feature empty bascet')
-    def test_checkout_feature_empty_bascet(self):
+    # Test that checks empty address fields and redirection to your information page from your cart page
+    @allure.step('Test checkout feature empty basket')
+    def test_checkout_feature_empty_basket(self):
         self.checkout_page.empty_basket()
         assert (self.cart_page.get_cart_header() == 'Your Cart'), "Header is not as expected!"
 
@@ -30,16 +29,16 @@ class TestCheckoutFeature:
 
 
 @pytest.mark.usefixtures('setup4')
-class TestOverwievFeature:
+class TestOverviewFeature:
 
     # Test that checks correct completion of the order and redirection to finish page from overview page
-    @allure.step('Test checkout overwiev finish')
-    def test_checkout_overwiev_finish(self):
+    @allure.step('Test checkout overview finish')
+    def test_checkout_overview_finish(self):
         self.checkout_overview_page.finish()
         assert self.checkout_overview_page.finish_header_finder() == "Finish"
 
     # Test that checks cancellation of an order placed and redirection to products page from overview page
-    @allure.step('Test checkout overwiev cancel')
+    @allure.step('Test checkout overview cancel')
     def test_checkout_overview_cancel(self):
         self.checkout_overview_page.cancel()
         assert self.checkout_overview_page.product_header_finder() == "Products"
