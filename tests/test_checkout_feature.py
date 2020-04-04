@@ -5,10 +5,11 @@ import allure
 class TestCheckoutFeatureEmptyBasket:
 
 # Test that checks epmty address fields and redirection to your information page from your cart page
-    @allure.step('Test checkout feature continue')
-    def test_checkout_feature_continue(self):
+    @allure.step('Test checkout feature empty bascet')
+    def test_checkout_feature_empty_bascet(self):
         self.checkout_page.empty_basket()
-        assert self.checkout_page.your_information_finder() is not "Checkout: Your Information"
+        assert self.cart_page.get_cart_header() == 'Your Cart'
+
 
 
 #
@@ -16,8 +17,8 @@ class TestCheckoutFeatureEmptyBasket:
 # class TestCheckoutFeature:
 #
 # # Test that checks fill address fields and redirection to overview page from your information page
-#     @allure.step('Test checkout feature empty basket')
-#     def test_checkout_feature_empty_basket(self):
+#     @allure.step('Test checkout feature continue')
+#     def test_checkout_feature_continue(self):
 #         self.checkout_page.person_data()
 #         assert self.cart_page.get_cart_header() == "Checkout: Overview"
 #
