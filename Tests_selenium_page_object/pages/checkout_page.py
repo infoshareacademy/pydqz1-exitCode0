@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
-from utils.generator_function import generate_nick
-from utils.generator_function import numbers_generator
+from Tests_selenium_page_object.utils.generator_function import generate_nick
+from Tests_selenium_page_object.utils.generator_function import numbers_generator
 
 
 class CheckoutPage:

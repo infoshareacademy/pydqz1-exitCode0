@@ -1,0 +1,4 @@
+{
+  "test_cart.py::TestInventory::test_Konrada": true,
+  "test_checkout_feature.py::TestCheckoutFeatureEmptyBasket::test_checkout_feature_empty_bascet": true
+}

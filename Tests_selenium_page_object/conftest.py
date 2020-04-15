@@ -4,13 +4,13 @@ from allure_commons.types import AttachmentType
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-from pages.checkout_overview_page import CheckoutOverviewPage
-from pages.checkout_page import CheckoutPage
-from pages.inventory_page import InventoryPage
-from pages.login_page import LoginPage
-from pages.cart_page import CartPage
-from utils.generator_function import generate_nick
-from utils.generator_function import numbers_generator
+from Tests_selenium_page_object.pages.checkout_overview_page import CheckoutOverviewPage
+from Tests_selenium_page_object.pages.checkout_page import CheckoutPage
+from Tests_selenium_page_object.pages.inventory_page import InventoryPage
+from Tests_selenium_page_object.pages.login_page import LoginPage
+from Tests_selenium_page_object.pages.cart_page import CartPage
+from Tests_selenium_page_object.utils.generator_function import generate_nick
+from Tests_selenium_page_object.utils.generator_function import numbers_generator
 
 
 @pytest.fixture()
