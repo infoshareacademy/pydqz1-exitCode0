@@ -1,7 +1,7 @@
 import pytest
 import allure
 import time
-from Tests_selenium_page_object.utils.generator_function import generate_nick
+from Tests_Selenium_page_object.utils.generator_function import generate_nick
 
 
 @pytest.mark.usefixtures('setup')
