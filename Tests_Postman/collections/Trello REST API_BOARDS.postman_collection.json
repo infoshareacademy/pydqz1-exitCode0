@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "d4c5d2d7-ff4d-40cc-bef2-3af5d14d5e5c",
+		"name": "Trello REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Boards",
+			"item": [
+				{
+					"name": "Get a Board",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/D4AtUzgm?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"D4AtUzgm"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Request a single board."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Board",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/:id?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								":id"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Delete a board."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cards on a Board",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/D4AtUzgm/cards?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"D4AtUzgm",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Get all of the open Cards on a Board."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a List on a Board",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/D4AtUzgm/lists?name={{listName}}&token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"D4AtUzgm",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{listName}}",
+									"description": "The name of the list to be created. 1 to 16384 characters long."
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Create a new List on a Board."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Board",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/?name={{boardName}}&token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{boardName}}"
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Create a new board."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "41d5e0b8-b726-448d-adda-1401cad20fe9",
+			"key": "protocol",
+			"value": "https",
+			"type": "string",
+			"description": "The HTTP Protocol that should be used for this REST API."
+		},
+		{
+			"id": "3d554754-999d-4c38-a0da-bc2ba7cd3e21",
+			"key": "host",
+			"value": "api.trello.com",
+			"type": "string",
+			"description": "The HTTP host that should be used for this REST API."
+		},
+		{
+			"id": "219e1e15-f682-4439-8fc1-2899600475fa",
+			"key": "basePath",
+			"value": "1/",
+			"type": "string",
+			"description": "The path, after the host, of the base of the REST API."
+		}
+	],
+	"protocolProfileBehavior": {}
+}

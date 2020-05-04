@@ -1,0 +1,9 @@
+{
+  "test_cart.py::TestInventory::test_Konrada": true,
+  "test_checkout_feature.py::TestCheckoutFeature::test_checkout_feature_cancel": true,
+  "test_checkout_feature.py::TestCheckoutFeature::test_checkout_feature_continue": true,
+  "test_checkout_feature.py::TestCheckoutFeatureEmptyBasket::test_checkout_feature_empty_bascet": true,
+  "test_checkout_feature.py::TestCheckoutFeatureEmptyBasket::test_checkout_feature_empty_basket": true,
+  "test_checkout_feature.py::TestOverviewFeature::test_checkout_overview_cancel": true,
+  "test_checkout_feature.py::TestOverviewFeature::test_checkout_overview_finish": true
+}

@@ -22,5 +22,8 @@
   "test_checkout_feature.py::TestOverwievFeature::test_checkout_overwiev_finish",
   "test_checkout_feature.py::TestOverwievFeature::test_checkout_overview_cancel",
   "test_cart.py::TestInventory::test_Konrada",
-  "test_checkout_feature.py::TestCheckoutFeatureEmptyBasket::test_checkout_feature_empty_bascet"
+  "test_checkout_feature.py::TestCheckoutFeatureEmptyBasket::test_checkout_feature_empty_bascet",
+  "test_checkout_feature.py::TestCheckoutFeatureEmptyBasket::test_checkout_feature_empty_basket",
+  "test_checkout_feature.py::TestOverviewFeature::test_checkout_overview_finish",
+  "test_checkout_feature.py::TestOverviewFeature::test_checkout_overview_cancel"
 ]

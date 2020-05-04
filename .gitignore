@@ -151,7 +151,7 @@ fabric.properties
 /results
 /venv
 .idea
-Tests_selenium_page_object/.pytest_cache
+Tests_Selenium_page_object/.pytest_cache
 __pycache__
 .DS_Store
 .vscode
