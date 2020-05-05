@@ -9,145 +9,20 @@
 			"name": "Boards",
 			"item": [
 				{
-					"name": "Get a Board",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/D4AtUzgm?token={{yourToken}}&key={{yourKey}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{basePath}}boards",
-								"D4AtUzgm"
-							],
-							"query": [
-								{
-									"key": "token",
-									"value": "{{yourToken}}"
-								},
-								{
-									"key": "key",
-									"value": "{{yourKey}}"
-								}
-							]
-						},
-						"description": "Request a single board."
-					},
-					"response": []
-				},
-				{
-					"name": "Delete a Board",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/:id?token={{yourToken}}&key={{yourKey}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{basePath}}boards",
-								":id"
-							],
-							"query": [
-								{
-									"key": "token",
-									"value": "{{yourToken}}"
-								},
-								{
-									"key": "key",
-									"value": "{{yourKey}}"
-								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
-								}
-							]
-						},
-						"description": "Delete a board."
-					},
-					"response": []
-				},
-				{
-					"name": "Get Cards on a Board",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/D4AtUzgm/cards?token={{yourToken}}&key={{yourKey}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{basePath}}boards",
-								"D4AtUzgm",
-								"cards"
-							],
-							"query": [
-								{
-									"key": "token",
-									"value": "{{yourToken}}"
-								},
-								{
-									"key": "key",
-									"value": "{{yourKey}}"
-								}
-							]
-						},
-						"description": "Get all of the open Cards on a Board."
-					},
-					"response": []
-				},
-				{
-					"name": "Create a List on a Board",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/D4AtUzgm/lists?name={{listName}}&token={{yourToken}}&key={{yourKey}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{basePath}}boards",
-								"D4AtUzgm",
-								"lists"
-							],
-							"query": [
-								{
-									"key": "name",
-									"value": "{{listName}}",
-									"description": "The name of the list to be created. 1 to 16384 characters long."
-								},
-								{
-									"key": "token",
-									"value": "{{yourToken}}"
-								},
-								{
-									"key": "key",
-									"value": "{{yourKey}}"
-								}
-							]
-						},
-						"description": "Create a new List on a Board."
-					},
-					"response": []
-				},
-				{
 					"name": "Create a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9fac6b56-0a45-469c-a400-0511aee4c650",
+								"exec": [
+									"var Id = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"BoardId\", Id.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -177,6 +52,143 @@
 							]
 						},
 						"description": "Create a new board."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Board",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{BoardId}}?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{BoardId}}"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Request a single board."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a List on a Board",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{BoardId}}/lists?name={{listName}}&token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{BoardId}}",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{listName}}",
+									"description": "The name of the list to be created. 1 to 16384 characters long."
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Create a new List on a Board."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cards on a Board",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{BoardId}}/cards?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{BoardId}}",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Get all of the open Cards on a Board."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Board",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{BoardId}}?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{BoardId}}"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Delete a board."
 					},
 					"response": []
 				}
