@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "c5c988f1-739d-4e26-b887-a6b195a50bc0",
+		"name": "Trello REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cards",
+			"item": [
+				{
+					"name": "Create a new Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "88c32475-61d9-4807-aa4c-109f9f05ccc0",
+								"exec": [
+									"var Id = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"CardId\", Id.id);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards?idList={{idList}}&key={{yourKey}}&token={{yourToken}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{idList}}",
+									"description": "The ID of the list the card should be created in"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								}
+							]
+						},
+						"description": "Create a new card"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d873343a-deb8-4be1-a80a-a2ba36dcd61d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{CardId}}?key={{yourKey}}&token={{yourToken}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards",
+								"{{CardId}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								}
+							]
+						},
+						"description": "Update a card"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2b38d752-c422-4199-afe8-681593027914",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{CardId}}?key={{yourKey}}&token={{yourToken}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards",
+								"{{CardId}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								}
+							]
+						},
+						"description": "Get a card by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get the List of a Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "042bbf09-ade6-413b-b692-8a1f216e75d5",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{CardId}}/list?key={{yourKey}}&token={{yourToken}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards",
+								"{{CardId}}",
+								"list"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								}
+							]
+						},
+						"description": "Get the list a card is in"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9479f920-1a6a-43ea-bb47-d229ea3eacd3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{CardId}}?key={{yourKey}}&token={{yourToken}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards",
+								"{{CardId}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								}
+							]
+						},
+						"description": "Delete a Card"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "pierwsze testowe api trelo",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/members/me/boards?key={{yourKey}}&token={{yourToken}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"members",
+						"me",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{yourKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"id": "8515cd0b-c38c-429b-805a-ff1559be7b58",
+			"key": "protocol",
+			"value": "https",
+			"type": "string",
+			"description": "The HTTP Protocol that should be used for this REST API."
+		},
+		{
+			"id": "1da133e5-9750-4a93-9193-ef69bb6badbb",
+			"key": "host",
+			"value": "api.trello.com",
+			"type": "string",
+			"description": "The HTTP host that should be used for this REST API."
+		},
+		{
+			"id": "eb280f12-1ec8-40cd-a621-fec576c6b674",
+			"key": "basePath",
+			"value": "1/",
+			"type": "string",
+			"description": "The path, after the host, of the base of the REST API."
+		}
+	],
+	"protocolProfileBehavior": {}
+}
