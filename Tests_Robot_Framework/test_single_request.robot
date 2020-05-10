@@ -3,12 +3,7 @@ Documentation
 Library             Collections
 Library             RequestsLibrary
 Suite Setup         Create Session For Endpoint
-
-*** Variables ***
-${ENDPOINT}            1/boards
-${TRELLO_URL}          https://api.trello.com
-${YOUR_KEY}            78a2098e65bf7c3f8e585f7ea4c383cf
-${YOUR_TOKEN}          23de07f02dac895c62107ae025a18f3e4ee17c18c21d39639ebf2f9bd3a68ed1
+Resource            Resources.robot
 
 *** Test Cases ***
 Valid Status Code For Request Create A Board
