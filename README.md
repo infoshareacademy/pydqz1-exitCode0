@@ -23,6 +23,9 @@ We recommend you chcecking the requirements:
 * webdriver-manager==2.3.0
 
 2.
+* Postman v7.23.0
+
+3.
 * robotframework==3.1.2
 * robotframework-seleniumlibrary==4.3.0
 * urllib3==1.25.9
