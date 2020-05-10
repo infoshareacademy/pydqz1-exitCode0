@@ -17,11 +17,18 @@
 								"id": "88c32475-61d9-4807-aa4c-109f9f05ccc0",
 								"exec": [
 									"var Id = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"CardId\", Id.id);",
+									"postman.setEnvironmentVariable(\"idCard\", Id.id);",
 									"",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
-									"});"
+									"});",
+									"",
+									"pm.test(\"Check if id card id created\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"id\");",
+									"});",
+									"",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -84,14 +91,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{CardId}}?key={{yourKey}}&token={{yourToken}}",
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{idCard}}?key={{yourKey}}&token={{yourToken}}",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"{{basePath}}cards",
-								"{{CardId}}"
+								"{{idCard}}"
 							],
 							"query": [
 								{
@@ -114,11 +121,12 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2b38d752-c422-4199-afe8-681593027914",
+								"id": "66282ef4-a7b6-4dc7-9ad4-bb9a87f49eba",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
-									"});"
+									"});",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -143,14 +151,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{CardId}}?key={{yourKey}}&token={{yourToken}}",
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{idCard}}?key={{yourKey}}&token={{yourToken}}",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"{{basePath}}cards",
-								"{{CardId}}"
+								"{{idCard}}"
 							],
 							"query": [
 								{
@@ -187,14 +195,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{CardId}}/list?key={{yourKey}}&token={{yourToken}}",
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{idCard}}/list?key={{yourKey}}&token={{yourToken}}",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"{{basePath}}cards",
-								"{{CardId}}",
+								"{{idCard}}",
 								"list"
 							],
 							"query": [
@@ -222,6 +230,11 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check if the card was deletted\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('limits');",
 									"});"
 								],
 								"type": "text/javascript"
@@ -232,14 +245,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{CardId}}?key={{yourKey}}&token={{yourToken}}",
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{idCard}}?key={{yourKey}}&token={{yourToken}}",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"{{basePath}}cards",
-								"{{CardId}}"
+								"{{idCard}}"
 							],
 							"query": [
 								{
