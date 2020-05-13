@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "36ca8d6a-0c70-4260-b8ac-bd08bbdced04",
+		"name": "Trello REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lists",
+			"item": [
+				{
+					"name": "Get a List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}lists/{{ListId}}?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}lists",
+								"{{ListId}}"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Get information about a List"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a List",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}lists/{{ListId}}?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}lists",
+								"{{ListId}}"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Update the properties of a List"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}lists?idBoard={{idBoard}}&name={{listName}}&token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}lists"
+							],
+							"query": [
+								{
+									"key": "idBoard",
+									"value": "{{idBoard}}"
+								},
+								{
+									"key": "name",
+									"value": "{{listName}}"
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Create a new List on a Board"
+					},
+					"response": []
+				},
+				{
+					"name": "Get the Board a List is on",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}lists/{{ListId}}/board?key={{yourKey}}&token={{yourToken}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}lists",
+								"{{ListId}}",
+								"board"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								}
+							]
+						},
+						"description": "Get the board a list is on"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cards in a List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}lists/{{ListId}}/cards?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}lists",
+								"{{ListId}}",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "List the cards in a list"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "3a124654-5ada-4b33-91a0-d8874085ba8e",
+			"key": "protocol",
+			"value": "https",
+			"type": "string",
+			"description": "The HTTP Protocol that should be used for this REST API."
+		},
+		{
+			"id": "70887319-d378-4364-bec2-6af2a0a88581",
+			"key": "host",
+			"value": "api.trello.com",
+			"type": "string",
+			"description": "The HTTP host that should be used for this REST API."
+		},
+		{
+			"id": "c239a384-803c-437f-b49f-37eff452aae8",
+			"key": "basePath",
+			"value": "1/",
+			"type": "string",
+			"description": "The path, after the host, of the base of the REST API."
+		}
+	],
+	"protocolProfileBehavior": {}
+}
