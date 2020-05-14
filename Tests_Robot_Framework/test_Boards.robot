@@ -6,7 +6,6 @@ Library             Collections
 Library             String
 Suite Setup         Create Session For Endpoint
 
-
 *** Test Cases ***
 Check If CREATE A BOARD Creates New Board
     [Tags]                                 BOARDS
@@ -14,53 +13,58 @@ Check If CREATE A BOARD Creates New Board
     ${resp}                                Create A Board            ${board_name}
     Request Should Be Successful           ${resp}
     Validate Board Name In The Response    ${resp}                   ${board_name}
-    ${new_board_id}                        Take ID from Response    ${resp}
+    ${new_board_id}                        Take ID from Response     ${resp}
     Set Suite Variable    ${BOARD_ID}      ${new_board_id}
 
 Check If GET A BOARD With Correct Id Returns Expected Board
     [Tags]                                 BOARDS
-    ${resp}                                Get A Board         ${BOARD_ID}
+    ${resp}                                Get A Board      ${BOARD_ID}
     Request Should Be Successful           ${resp}
-    Validate Board Id In The Response      ${resp}             ${BOARD_ID}
+    Validate Board Id In The Response      ${resp}          ${BOARD_ID}
 
 Check If GET A BOARD With Inorrect Id Returns "Invalid id" In The Response
     [Tags]                                 BOARDS
-    ${wrong_board_id}     Generate Random String       26          [NUMBERS][LETTERS]
+    ${wrong_board_id}                      Generate Random String        26    [NUMBERS][LETTERS]
     ${resp}                                Get A Board With Wrong Id     ${wrong_board_id}
-    Validate Bad Status Code        ${resp.status_code}
-    Check "Invalid id" In The Response  ${resp.content}
-
-Check If CREATE A LIST Creates List On Selected Board
-    [Tags]                                            LISTS
-    ${list_name}            Set Variable              New List
-    ${resp}                 Create A List             ${list_name}
-    Request Should Be Successful                      ${resp}
-    ${new_list_id}     Take ID from Response           ${resp}
-    Set Suite Variable      ${LIST_ID}                ${new_list_id}
-
-Check If CREATE A LIST With Inorrect Id Returns "Invalid value for idBoard" In The Response
-    [Tags]                                            LISTS
-    ${list_name}            Set Variable              New List
-    ${resp}                 Create A List Wrong Id             ${list_name}
-    Validate Bad Status Code                          ${resp.status_code}
+    Validate Bad Status Code               ${resp.status_code}
     Check "Invalid id" In The Response     ${resp.content}
 
-Check If CREATE NEW CARD Creates Card On Board
-    [Tags]                                            CARDS
-    ${resp}                 Create A Card            ${LIST_ID}
-    Request Should Be Successful                      ${resp}
-    ${new_card_id}     Take ID from Response           ${resp}
-    Set Suite Variable      ${CARD_ID}                ${new_card_id}
+Check If CREATE A LIST Creates List On Selected Board
+    [Tags]                                     LISTS
+    ${list_name}      Set Variable             New List
+    ${resp}           Create A List            ${list_name}
+    Request Should Be Successful               ${resp}
+    ${new_list_id}    Take ID from Response    ${resp}
+    Set Suite Variable      ${LIST_ID}         ${new_list_id}
 
-Check If GET CARDS FROM BOARD
-    [Tags]                                 BOARDS
-    ${resp}                                Get Cards From Board         ${BOARD_ID}
-    Request Should Be Successful                      ${resp}
-#    Validate Card Id In The Response      ${resp}           ${LIST_ID}
+Check If CREATE A LIST With Inorrect Id Returns "Invalid value for idBoard" In The Response
+    [Tags]                                      LISTS
+    ${list_name}      Set Variable              New List
+    ${resp}           Create A List Wrong Id    ${list_name}
+    Validate Bad Status Code                    ${resp.status_code}
+    Check "Invalid id" In The Response          ${resp.content}
+
+Check If CREATE NEW CARD Creates Card On Board
+    [Tags]                                      CARDS
+    ${resp}           Create A Card             ${LIST_ID}
+    Request Should Be Successful                ${resp}
+    ${new_card_id}    Take ID from Response     ${resp}
+    Set Suite Variable      ${CARD_ID}          ${new_card_id}
+
+Check If GET CARDS FROM BOARD returns status code 200
+    [Tags]                                      CARDS
+    ${resp}           Get Cards From Board      ${BOARD_ID}
+    Request Should Be Successful                ${resp}
+#    Validate Card Id In The Response      ${resp}     ${LIST_ID}
+
+Check if DELETE A BOARD deletes board
+    [Tags]                            BOARDS
+    ${resp}       Delete A Board      ${BOARD_ID}
+    Request Should Be Successful      ${resp}
 
 *** Keywords ***
 Create Session For Endpoint
-    Create Session      trello                 ${URL}
+    Create Session      trello    ${URL}
 
 Create A Board
     [Arguments]         ${board_name}
@@ -79,12 +83,12 @@ Create A List
     [Return]            ${resp}
 
 Create A List Wrong Id
-    [Arguments]         ${list_name}
-    ${wrong_board_id}     Generate Random String    26          [NUMBERS][LETTERS]
-    ${params}           Create Dictionary      name=${list_name}    token=${YOUR_TOKEN}    key=${YOUR_KEY}
-    ${resp}             Post Request           trello    ${ENDPOINT}/${wrong_board_id}/lists/    params=${params}
-    Log                 ${resp}
-    [Return]            ${resp}
+    [Arguments]          ${list_name}
+    ${wrong_board_id}    Generate Random String     26    [NUMBERS][LETTERS]
+    ${params}            Create Dictionary          name=${list_name}    token=${YOUR_TOKEN}    key=${YOUR_KEY}
+    ${resp}              Post Request               trello    ${ENDPOINT}/${wrong_board_id}/lists/    params=${params}
+    Log                  ${resp}
+    [Return]             ${resp}
 
 Get A Board
     [Arguments]         ${BOARD_ID}
@@ -147,6 +151,14 @@ Get Cards From Board
     ${params}           Create Dictionary      token=${YOUR_TOKEN}    key=${YOUR_KEY}
     ${resp}             Get Request           trello    ${ENDPOINT}/${BOARD_ID}/cards    params=${params}
     ${resp_json}        To Json                ${resp.text}         pretty_print=${True}
+    Log                 ${resp_json}
+    [Return]            ${resp}
+
+Delete A Board
+    [Arguments]         ${BOARD_ID}
+    ${params}           Create Dictionary      token=${YOUR_TOKEN}    key=${YOUR_KEY}
+    ${resp}             Delete Request         trello    ${ENDPOINT1}${BOARD_ID}    params=${params}
+    ${resp_json}        To Json                ${resp.text}           pretty_print=${True}
     Log                 ${resp_json}
     [Return]            ${resp}
 
