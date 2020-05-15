@@ -1,0 +1,373 @@
+{
+	"info": {
+		"_postman_id": "cbbb8a99-348b-48cc-b6b6-74e9104e87dd",
+		"name": "TRELLO Rest API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Boards",
+			"item": [
+				{
+					"name": "Create a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2e3b05b7-8a26-4245-9a7f-195fb4e6b75e",
+								"exec": [
+									"var Id = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"idBoard\", Id.id);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check if id is created\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"id\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/?name={{boardName}}&token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{boardName}}"
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Create a new board."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cb8076a0-2048-4804-a7a9-cf5790fb630b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check if id is created\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"id\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{idBoard}}?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{idBoard}}"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Request a single board."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a List on a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a044d9d-0166-49a3-a4e6-48f840435afc",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check if id is created\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"id\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{idBoard}}/lists?name={{listName}}&token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{idBoard}}",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{listName}}",
+									"description": "The name of the list to be created. 1 to 16384 characters long."
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Create a new List on a Board."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "36a18749-01ed-4ef4-a4d8-4337fc387350",
+								"exec": [
+									"var Id = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"idCard\", Id.id);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check if id is created\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"id\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards?idList={{idList}}&key={{yourKey}}&token={{yourToken}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{idList}}",
+									"description": "The ID of the list the card should be created in"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								},
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								}
+							]
+						},
+						"description": "Create a new card"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cards on a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1249ab21-e0d9-4315-8ccb-9d62864535d3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check if id is created\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"id\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{idBoard}}/cards?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{idBoard}}",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								}
+							]
+						},
+						"description": "Get all of the open Cards on a Board."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e4a2eebd-6f4c-4d65-b9ca-0868a4895272",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{idBoard}}?token={{yourToken}}&key={{yourKey}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{idBoard}}"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{yourToken}}"
+								},
+								{
+									"key": "key",
+									"value": "{{yourKey}}"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Delete a board."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "https://api.trello.com/1/members/me/boards?key={{yourKey}}&token={{yourToken}}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/members/me/boards?key={{yourKey}}&token={{yourToken}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"members",
+						"me",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{yourKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
