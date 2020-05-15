@@ -68,9 +68,9 @@ Create Session For Endpoint
 
 Create A Board
     [Arguments]         ${board_name}
-    ${params}           Create Dictionary      name=${board_name}    token=${YOUR_TOKEN}    key=${YOUR_KEY}
+    ${params}           Create Dictionary      name=${board_name}       token=${YOUR_TOKEN}    key=${YOUR_KEY}
     ${resp}             Post Request           trello    ${ENDPOINT}    params=${params}
-    ${resp_json}        To Json                ${resp.text}          pretty_print=${True}
+    ${resp_json}        To Json                ${resp.text}             pretty_print=${True}
     Log                 ${resp_json}
     [Return]            ${resp}
 
